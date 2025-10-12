@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: bsuir-jobs-backend
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn campusjobs.wsgi:application --bind 0.0.0.0:10000
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "0"
+      - key: ALLOWED_HOSTS
+        value: bsuir-jobs-backend.onrender.com
+      - key: CSRF_TRUSTED_ORIGINS
+        value: https://bsuir-jobs-backend.onrender.com
+      - key: DATABASE_URL
+        sync: false   # укажем руками в панели (Neon)
+      - key: PORT
+        value: "10000"
+    autoDeploy: true
+    healthCheckPath: /healthz/
+    postDeployCommand: |
+      python manage.py migrate --noinput && \
+      python manage.py collectstatic --noinput && \
+      python manage.py createsuperuser --noinput || true
