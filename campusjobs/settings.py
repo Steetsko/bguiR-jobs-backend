@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     "drf_spectacular",       # ← единожды
 
     "taxonomy",              # ← твое приложение
+    "companies",
+    "vacancies",
     # другие твои apps…
 ]
 
