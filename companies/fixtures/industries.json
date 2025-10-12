@@ -1,0 +1,23 @@
+[
+  {"model": "companies.industry", "pk": 1, "fields": {"slug": "software", "name": "Software / IT"}},
+  {"model": "companies.industry", "pk": 2, "fields": {"slug": "backend", "name": "Backend"}},
+  {"model": "companies.industry", "pk": 3, "fields": {"slug": "frontend", "name": "Frontend"}},
+  {"model": "companies.industry", "pk": 4, "fields": {"slug": "mobile", "name": "Mobile"}},
+  {"model": "companies.industry", "pk": 5, "fields": {"slug": "devops", "name": "DevOps / SRE"}},
+  {"model": "companies.industry", "pk": 6, "fields": {"slug": "data", "name": "Data / Analytics"}},
+  {"model": "companies.industry", "pk": 7, "fields": {"slug": "ml", "name": "Machine Learning"}},
+  {"model": "companies.industry", "pk": 8, "fields": {"slug": "ai", "name": "AI"}},
+  {"model": "companies.industry", "pk": 9, "fields": {"slug": "qa", "name": "QA / Testing"}},
+  {"model": "companies.industry", "pk": 10, "fields": {"slug": "gamedev", "name": "GameDev"}},
+  {"model": "companies.industry", "pk": 11, "fields": {"slug": "embedded", "name": "Embedded"}},
+  {"model": "companies.industry", "pk": 12, "fields": {"slug": "electronics", "name": "Electronics"}},
+  {"model": "companies.industry", "pk": 13, "fields": {"slug": "telecom", "name": "Telecom / Networking"}},
+  {"model": "companies.industry", "pk": 14, "fields": {"slug": "security", "name": "Cybersecurity"}},
+  {"model": "companies.industry", "pk": 15, "fields": {"slug": "cloud", "name": "Cloud"}},
+  {"model": "companies.industry", "pk": 16, "fields": {"slug": "fintech", "name": "FinTech"}},
+  {"model": "companies.industry", "pk": 17, "fields": {"slug": "iot", "name": "IoT"}},
+  {"model": "companies.industry", "pk": 18, "fields": {"slug": "robotics", "name": "Robotics"}},
+  {"model": "companies.industry", "pk": 19, "fields": {"slug": "arvr", "name": "AR/VR"}},
+  {"model": "companies.industry", "pk": 20, "fields": {"slug": "other", "name": "Other"}}
+]
+

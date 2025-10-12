@@ -9,6 +9,13 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+# локаль и часовой пояс
+LANGUAGE_CODE = "ru"
+TIME_ZONE = "Europe/Minsk"
+
+USE_I18N = True
+USE_TZ = True
+
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -19,7 +26,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+LOCALE_PATHS = [BASE_DIR / "locale"]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -57,6 +64,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware", 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -90,7 +98,7 @@ WSGI_APPLICATION = 'campusjobs.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.parse(
-        os.getenv("DATABASE_URL", "postgres://postgres:111@localhost:5432/bsuir"),
+        os.getenv("DATABASE_URL", "postgresql://postgres:1111@db.cuofjzzmdzwqtdqeqgoc.supabase.co:5432/postgres"),
         conn_max_age=600
     )
 }
