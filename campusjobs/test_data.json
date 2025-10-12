@@ -1,0 +1,160 @@
+[
+  {
+    "model": "app.User",
+    "pk": "d0b8a750-7c53-4e19-b5a2-f31290f7b101",
+    "fields": {
+      "full_name": "Иван Иванов",
+      "email": "ivan@student.com",
+      "role": "student",
+      "created_at": "2025-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "app.User",
+    "pk": "b8d1f6f5-1234-44c0-b77c-dc3b821baf02",
+    "fields": {
+      "full_name": "TechCorp HR",
+      "email": "hr@techcorp.com",
+      "role": "company",
+      "created_at": "2025-01-02T12:00:00Z"
+    }
+  },
+  {
+    "model": "app.Skill",
+    "pk": 1,
+    "fields": {
+      "name": "Python",
+      "category": "Hard",
+      "description": "Основы программирования на Python"
+    }
+  },
+  {
+    "model": "app.Skill",
+    "pk": 2,
+    "fields": {
+      "name": "Teamwork",
+      "category": "Soft",
+      "description": "Умение работать в команде"
+    }
+  },
+  {
+    "model": "app.Course",
+    "pk": 1,
+    "fields": {
+      "title": "Основы Python",
+      "description": "Введение в Python для начинающих",
+      "provider": "Coursera",
+      "duration_hours": 40,
+      "difficulty": "beginner"
+    }
+  },
+  {
+    "model": "app.Course",
+    "pk": 2,
+    "fields": {
+      "title": "Эффективная командная работа",
+      "description": "Навыки коммуникации и распределения ролей",
+      "provider": "Stepik",
+      "duration_hours": 20,
+      "difficulty": "intermediate"
+    }
+  },
+  {
+    "model": "app.CourseSkill",
+    "pk": 1,
+    "fields": {
+      "course": 1,
+      "skill": 1,
+      "coverage_weight": "0.90"
+    }
+  },
+  {
+    "model": "app.CourseSkill",
+    "pk": 2,
+    "fields": {
+      "course": 2,
+      "skill": 2,
+      "coverage_weight": "0.80"
+    }
+  },
+  {
+    "model": "app.Vacancy",
+    "pk": 1,
+    "fields": {
+      "company": "b8d1f6f5-1234-44c0-b77c-dc3b821baf02",
+      "title": "Python Developer",
+      "description": "Работа с backend на Django",
+      "salary": "2000.00",
+      "created_at": "2025-02-01T09:00:00Z"
+    }
+  },
+  {
+    "model": "app.Vacancy",
+    "pk": 2,
+    "fields": {
+      "company": "b8d1f6f5-1234-44c0-b77c-dc3b821baf02",
+      "title": "Project Assistant",
+      "description": "Помощник менеджера проекта",
+      "salary": "1200.00",
+      "created_at": "2025-02-03T09:00:00Z"
+    }
+  },
+  {
+    "model": "app.VacancySkill",
+    "pk": 1,
+    "fields": {
+      "vacancy": 1,
+      "skill": 1,
+      "importance_weight": "0.90"
+    }
+  },
+  {
+    "model": "app.VacancySkill",
+    "pk": 2,
+    "fields": {
+      "vacancy": 2,
+      "skill": 2,
+      "importance_weight": "0.80"
+    }
+  },
+  {
+    "model": "app.StudentSkill",
+    "pk": 1,
+    "fields": {
+      "user": "d0b8a750-7c53-4e19-b5a2-f31290f7b101",
+      "skill": 1,
+      "level": 4
+    }
+  },
+  {
+    "model": "app.StudentSkill",
+    "pk": 2,
+    "fields": {
+      "user": "d0b8a750-7c53-4e19-b5a2-f31290f7b101",
+      "skill": 2,
+      "level": 3
+    }
+  },
+  {
+    "model": "app.CoverageResult",
+    "pk": 1,
+    "fields": {
+      "vacancy": 1,
+      "course": 1,
+      "coverage_percent": "95.50",
+      "missing_skills": "[]",
+      "created_at": "2025-03-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "app.CoverageResult",
+    "pk": 2,
+    "fields": {
+      "vacancy": 2,
+      "course": 2,
+      "coverage_percent": "88.00",
+      "missing_skills": "[\"Leadership\"]",
+      "created_at": "2025-03-01T10:00:00Z"
+    }
+  }
+]
