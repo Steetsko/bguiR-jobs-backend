@@ -1,0 +1,17 @@
+[
+  {"model": "taxonomy.skill", "pk": 1, "fields": {"name": "python", "category": "backend", "description": ""}},
+  {"model": "taxonomy.skill", "pk": 2, "fields": {"name": "sql", "category": "db", "description": ""}},
+  {"model": "taxonomy.skill", "pk": 3, "fields": {"name": "docker", "category": "devops", "description": ""}},
+
+  {"model": "taxonomy.course", "pk": 1, "fields": {
+    "title": "Основы Python", "description": "", "provider": "БГУИР",
+    "duration_hours": 24, "difficulty": "beginner"
+  }},
+  {"model": "taxonomy.course", "pk": 2, "fields": {
+    "title": "Базы данных и SQL", "description": "", "provider": "БГУИР",
+    "duration_hours": 20, "difficulty": "beginner"
+  }},
+
+  {"model": "taxonomy.courseskill", "pk": 1, "fields": {"course": 1, "skill": 1, "coverage_weight": "1.00"}},
+  {"model": "taxonomy.courseskill", "pk": 2, "fields": {"course": 2, "skill": 2, "coverage_weight": "1.00"}}
+]
