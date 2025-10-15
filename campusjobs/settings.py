@@ -16,7 +16,6 @@ from dotenv import load_dotenv
 import dj_database_url   # <-- ЭТО НУЖНО
 
 load_dotenv()
-from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -51,6 +50,7 @@ INSTALLED_APPS = [
     "taxonomy",              # ← твое приложение
     "companies",
     "vacancies",
+    "users.apps.UsersConfig",
     # другие твои apps…
 ]
 
@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'campusjobs.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.parse(
-        os.getenv("DATABASE_URL", "postgresql://postgres:1111@db.cuofjzzmdzwqtdqeqgoc.supabase.co:5432/postgres"),
+        os.getenv("DATABASE_URL", "postgresql://postgres:1111@db.cuofjzzmdzwqtdqeqgoc.supabase.co:5432/postgres?sslmode=require"),
         conn_max_age=600
     )
 }
@@ -101,25 +101,19 @@ DEBUG = os.getenv("DJANGO_DEBUG", "0") == "1"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 CSRF_TRUSTED_ORIGINS = [s for s in os.getenv("CSRF_TRUSTED_ORIGINS","").split(",") if s]
 
-# Password validation
+# Password validation - ОТКЛЮЧЕНО
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+AUTH_PASSWORD_VALIDATORS = []
+
+# Отключаем хеширование паролей - пароли будут храниться в открытом виде
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.MD5PasswordHasher"
 ]
 
-
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # дефолтный бэкенд Django
+]
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -147,6 +141,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+      "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
@@ -156,9 +151,13 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "0.1.0",
 }
 
-from pathlib import Path
-import os
-from dotenv import load_dotenv
-import dj_database_url
+
 
 load_dotenv() 
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
